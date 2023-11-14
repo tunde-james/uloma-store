@@ -1,8 +1,9 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { CartProvider as USCProvider } from 'use-shopping-cart';
 
-function CartProvider({ children }: { children: React.ReactNode }) {
+function CartProvider({ children }: { children: ReactNode }) {
   return (
     <USCProvider
       mode="payment"
@@ -11,7 +12,7 @@ function CartProvider({ children }: { children: React.ReactNode }) {
       successUrl="http://localhost:300/stripe/success"
       cancelUrl="http://localhost:300/stripe/error"
       currency="USD"
-      billingAddressCollection={true}
+      billingAddressCollection={false}
       shouldPersist={true}
       language="en-US"
     >

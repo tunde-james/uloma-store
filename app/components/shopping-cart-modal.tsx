@@ -30,7 +30,7 @@ function ShoppingCartModal() {
       if (result?.error) {
         console.log(result);
       }
-    } catch (err) { 
+    } catch (err) {
       console.log('Error:', err);
     }
   }
