@@ -1,3 +1,4 @@
+import AddToBag from '@/app/components/add-to-bag';
 import ImageGallery from '@/app/components/image-gallery';
 import { client } from '@/app/lib/sanity';
 import { ProductDetailsType } from '@/app/types/types';
@@ -76,10 +77,18 @@ async function ProductPage({ params }: { params: { slug: string } }) {
             </div>
 
             <div className="flex gap-2.5">
-              <Button className="capitalize">add to bag</Button>
+              <AddToBag
+                key={productDetails._id}
+                currency="USD"
+                description={productDetails.description}
+                image={productDetails.images[0]}
+                name={productDetails.name}
+                price={productDetails.price}
+              />
               <Button variant={'secondary'} className="capitalize">
                 checkout now
               </Button>
+              s
             </div>
 
             <p className="mt-12 text-base text-gray-500 tracking-wide">
