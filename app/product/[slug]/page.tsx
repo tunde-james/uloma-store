@@ -84,11 +84,11 @@ async function ProductPage({ params }: { params: { slug: string } }) {
                 image={productDetails.images[0]}
                 name={productDetails.name}
                 price={productDetails.price}
+                price_id={productDetails.price_id}
               />
               <Button variant={'secondary'} className="capitalize">
                 checkout now
               </Button>
-              s
             </div>
 
             <p className="mt-12 text-base text-gray-500 tracking-wide">

@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -16,7 +17,23 @@ function ShoppingCartModal() {
     handleCartClick,
     cartDetails,
     removeItem,
+    totalPrice,
+    redirectToCheckout,
   } = useShoppingCart();
+
+  async function handleCheckoutClick(event: any) {
+    event.preventDefault();
+
+    try {
+      const result = await redirectToCheckout();
+
+      if (result?.error) {
+        console.log(result);
+      }
+    } catch (err) { 
+      console.log('Error:', err);
+    }
+  }
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -76,6 +93,38 @@ function ShoppingCartModal() {
                 </>
               )}
             </ul>
+          </div>
+
+          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+            <div className="flex justify-between text-base font-medium text-gray-900">
+              <p className="capitalize">subtotal:</p>
+              <p>${totalPrice}</p>
+            </div>
+            <p className="mt-0.5 text-sm text-gray-500">
+              shipping and taxes are calculated at checkout
+            </p>
+
+            <div className="mt-6">
+              <Button
+                className="w-full capitalize"
+                onClick={handleCheckoutClick}
+              >
+                checkout
+              </Button>
+            </div>
+
+            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <p className="">
+                <span className="uppercase">or </span>
+
+                <button
+                  className="font-medium text-primary hover:text-primary/80 capitalize"
+                  onClick={() => handleCartClick()}
+                >
+                  continue shopping
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </SheetContent>

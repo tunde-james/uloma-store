@@ -10,9 +10,17 @@ export interface ProductCart {
   price: number;
   currency: string;
   image: any;
+  price_id: string;
 }
 
-function AddToBag({ name, description, price, currency, image }: ProductCart) {
+function AddToBag({
+  name,
+  description,
+  price,
+  currency,
+  image,
+  price_id,
+}: ProductCart) {
   const { addItem, handleCartClick } = useShoppingCart();
 
   const product = {
@@ -21,7 +29,7 @@ function AddToBag({ name, description, price, currency, image }: ProductCart) {
     price: price,
     currency: currency,
     image: urlFor(image).url(),
-    id: 'ababa',
+    price_id: price_id,
   };
 
   return (
